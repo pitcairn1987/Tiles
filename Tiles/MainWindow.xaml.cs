@@ -136,8 +136,9 @@ namespace Tiles
             if (NewTile != null)
             {
                 var t = (TextBox)e.Source;
+                decimal value;
 
-                if (t.Text != "")
+                if (decimal.TryParse(t.Text, out value))
                 {
                     NewTile.Width = Convert.ToDouble(t.Text);
                 }
@@ -149,7 +150,8 @@ namespace Tiles
             if (NewTile != null)
             {
                 var t = (TextBox)e.Source;
-                if (t.Text != "")
+                decimal value;
+                if (decimal.TryParse(t.Text, out value))
                 {
                     NewTile.Height = Convert.ToDouble(t.Text);
                 }
@@ -163,7 +165,9 @@ namespace Tiles
             if (Ww != null)
             {
                 var t = (TextBox)e.Source;
-                if (t.Text != "")
+                decimal value;
+
+                if (decimal.TryParse(t.Text, out value))
                 {
                     NewWall.Width = Convert.ToDouble(t.Text);
                     Ww.Width = NewWall.ScaleWidth;
@@ -177,7 +181,8 @@ namespace Tiles
             if (Ww != null)
             {
                 var t = (TextBox)e.Source;
-                if (t.Text != "")
+                decimal value;
+                if (decimal.TryParse(t.Text, out value))
                 {
                     NewWall.Height = Convert.ToDouble(t.Text);
                     Ww.Height = NewWall.ScaleHeight;
@@ -270,18 +275,22 @@ namespace Tiles
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            NewTile = new Tile
+            decimal value;
+            if (decimal.TryParse(txtTileCnt.Text, out value))
             {
-                Height = Convert.ToDouble(txtHeight.Text),
-                Width = Convert.ToDouble(txtWidth.Text),
-                Fuga = (int)sldFuga.Value / 2,
-                FugaColor = brdImage.BorderBrush,
-                ImageRotation = Bi.Rotation,
-                ImageFile = FileName
-            };
+                NewTile = new Tile
+                {
+                    Height = Convert.ToDouble(txtHeight.Text),
+                    Width = Convert.ToDouble(txtWidth.Text),
+                    Fuga = (int) sldFuga.Value / 2,
+                    FugaColor = brdImage.BorderBrush,
+                    ImageRotation = Bi.Rotation,
+                    ImageFile = FileName
+                };
 
 
-            Ww.AddTile(NewTile,Convert.ToInt16(string.IsNullOrEmpty(txtTileCnt.Text) ? "0" : txtTileCnt.Text));
+                Ww.AddTile(NewTile, Convert.ToInt16(string.IsNullOrEmpty(txtTileCnt.Text) ? "0" : txtTileCnt.Text));
+            }
         }
 
         private void txtWidth_TextChanged(object sender, TextChangedEventArgs e)
