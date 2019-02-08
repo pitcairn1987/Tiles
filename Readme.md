@@ -1,0 +1,1 @@
+Tile visualizator. Helps You to set Tiles on the wall. You can change size of the wall (default scale is 5x). You can change size,picture,rotation of tile and change color and size of fugue.
