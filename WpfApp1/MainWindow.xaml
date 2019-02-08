@@ -1,0 +1,84 @@
+﻿<Window x:Class="Tiles.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas/xceed.com/wpf/xaml/toolkit"
+        
+        xmlns:local="clr-namespace:Tiles"
+        xmlns:xctk1="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="Tiles" Height="800" Width="350" ResizeMode="CanResize"  Closed="MainWin_Closed">
+
+    <Grid    >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="200"/>
+
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="0"/>
+
+        </Grid.RowDefinitions>
+
+        <Border Grid.RowSpan="3" Grid.ColumnSpan="2"  BorderBrush="Gray" BorderThickness="1" Height="150" Background="White" Margin="20,10,0,10"/>
+
+        <TextBox  x:Name="txtWidthWall" Grid.Column="1" Grid.Row="0" SelectionChanged="txtWidthWall_SelectionChanged" Width="50" Height="30" HorizontalAlignment="Left" Margin="20,20,0,10" Background="LightSteelBlue"  FontSize="20" Text="180"/>
+        <TextBox x:Name="txtHeightWall" Grid.Column="1" Grid.Row="1"  SelectionChanged="txtHeightWall_SelectionChanged" HorizontalAlignment="Left" Margin="20,10,0,20"   Background="LightSteelBlue"   Width="50" Height="30" FontSize="20" Text="200"/>
+        <TextBlock Text="WIDTH"  Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="85,23,54,10"  FontSize="20"/>
+        <TextBlock Text="HEIGHT"  Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="85,12,47,20"  FontSize="20"/>
+        <Image  Name="imgPhotoWall"  Grid.Column="0" VerticalAlignment="Center" Margin="20,0,0,0"  HorizontalAlignment="Center" Height="90" Width="90" Grid.RowSpan="2" />
+        <CheckBox x:Name="chkInvert" Grid.Column="0" Grid.Row="2" Content="INVERT" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <CheckBox x:Name="chkCenter" Grid.Column="1" Grid.Row="2" Content="CENTER" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        <Border Grid.RowSpan="5" Grid.Row="3" Grid.ColumnSpan="2"  BorderBrush="Gray" BorderThickness="1" Background="White" Margin="20,10,0,0"/>
+        <TextBox  x:Name="txtWidth" Grid.Column="1" Grid.Row="3" SelectionChanged="txtWidth_SelectionChanged" Width="50" Height="30" HorizontalAlignment="Left" Margin="20,20,0,10" Background="LightSteelBlue"  FontSize="20" Text="30" TextChanged="txtWidth_TextChanged"/>
+        <TextBox x:Name="txtHeight" Grid.Column="1" Grid.Row="4"  SelectionChanged="txtHeight_SelectionChanged" HorizontalAlignment="Left" Margin="20,12,0,18"   Background="LightSteelBlue"   Width="50" Height="30" FontSize="20" Text="10"/>
+        <TextBlock Text="WIDTH"  Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="85,22,54,12"  FontSize="20"/>
+        <TextBlock Text="HEIGHT"  Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="85,14,47,20"  FontSize="20"/>
+        <Image  Name="imgPhotoTile"  Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Margin="20,0,0,0"  HorizontalAlignment="Center" Height="90" Width="90" Grid.RowSpan="2" />
+        <Button x:Name="btnOpenImage"  Grid.Column="0" Grid.Row="5" Click="btnOpenImage_Click" Width="60" Height="30" Content="IMAGE" Margin="31,5,10,15" FontSize="15"/>
+        <TextBox x:Name="txtOpenImage"   Grid.Column="1" FontSize="20" Grid.Row="5" Height="30" Background="LightSteelBlue" Margin="21,5,24,15" />
+
+
+
+
+
+        <Slider x:Name="sldFuga" Grid.Row="6" Grid.ColumnSpan="2" VerticalAlignment="Center" ValueChanged="sldFuga_ValueChanged"
+                Minimum="0" Maximum="6" Value="0"  TickFrequency="2"  Width="281" HorizontalAlignment="Left" Margin="31,0,0,6" IsSnapToTickEnabled="True" TickPlacement="BottomRight" Foreground="Black"   />
+
+        <xctk1:ColorPicker Name="clpFuga" SelectedColorChanged="clpFuga_SelectedColorChanged" Grid.ColumnSpan="2" Grid.Row="7" AvailableColorsSortingMode="HueSaturationBrightness" DisplayColorAndName="True" ShowStandardColors="False" Margin="20,0,0,0" ></xctk1:ColorPicker>
+
+        <Border x:Name="brdImage" Margin="10,10,10,10" Grid.ColumnSpan="2" Grid.Row="8" BorderThickness="0" BorderBrush="Gray"  HorizontalAlignment="Center"  VerticalAlignment="Center" >
+            <Image  Name="imgPhoto"  MouseLeftButtonDown="imgPhoto_MouseLeftButtonDown" Stretch="Uniform" />
+        </Border>
+
+        <Button x:Name="btnGenerate" Click="btnGenerate_Click" HorizontalAlignment="Center" Width="290" Content="GENERATE" Height="30" Background="#FFDCDBD9" FontSize="15" Grid.ColumnSpan="2" Grid.Row="9" VerticalAlignment="Center" Margin="20,20,2,10"  />
+        <Button x:Name="btnAdd" Click="btnAdd_Click" Content="ADD" Height="30" Background="#FFDCDBD9" FontSize="15" Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="2" Margin="26,0,72,30"  />
+        <TextBox x:Name="txtTileCnt"  Background="LightSteelBlue" FontSize="20" Height="30" Grid.Column="1" Grid.Row="10" Width="60" HorizontalAlignment="Left" Margin="134,0,0,30" />
+<!--
+        <TextBlock x:Name="txbCalc" FontSize="15" Text="TILES COUNT:" Grid.ColumnSpan="2" Grid.Row="11" Margin="10,0,10,0" />
+        
+        -->
+
+
+
+
+
+
+    </Grid>
+
+
+</Window>
